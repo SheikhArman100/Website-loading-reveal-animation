@@ -12,7 +12,7 @@ import image6 from "../assets/image6_tiny.jpg";
 const container = {
   show: {
     transition: {
-      staggerChildren: 0.45,
+      staggerChildren: 0.55,
     },
   },
 };
@@ -52,7 +52,7 @@ const itemMain = {
 function Loader({ setLoading }) {
   return (
     <motion.div
-      className="relative flex h-screen w-screen origin-center items-center justify-center  text-center"
+      className="relative flex h-screen w-full origin-center items-center justify-center  text-center"
       variants={container}
       initial="hidden"
       animate="show"
