@@ -1,45 +1,46 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { RiMenu5Line } from "react-icons/ri";
 
 function Header() {
   return (
-    <div className="flex h-[8rem] w-full items-center justify-between px-10 py-4 md:px-2 xs:px-4">
-      <a
-        href="##"
-        className="ml-[6rem] text-5xl font-bold sm:ml-4  md:text-4xl lg:ml-[3rem] xs:ml-0 xs:text-2xl"
-      >
-        Cars
+    <motion.div
+      className="flex h-[4rem] items-center justify-between sm:px-4 md:h-[6rem] md:px-12 "
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: "easeInOut",
+        duration: 1,
+        delay: 0.6,
+      }}
+    >
+      <a href="##" className="text-3xl font-bold sm:text-4xl xl:text-5xl">
+        Car
       </a>
-      <nav className="sm:hidden">
-        <ul className="flex cursor-pointer  items-center justify-center space-x-10 text-2xl font-semibold md:text-lg">
-          <li className="origin-center border-whiteColor py-4 hover:border-b">
-            Design
-          </li>
-          <li className="origin-center border-whiteColor py-4 hover:border-b">
-            Vehicles
-          </li>
-          <li className="origin-center border-whiteColor py-4 hover:border-b">
-            Exclusive
-          </li>
-          <li className="origin-center border-whiteColor py-4 hover:border-b">
-            Innovation
-          </li>
-          <li className="origin-center border-whiteColor py-4 hover:border-b">
-            Wanna hear podcast?
-          </li>
-        </ul>
-      </nav>
-      <div className="mr-16 mt-2 flex items-center space-x-8 sm:mr-4 xs:mr-2 xs:space-x-2">
+      <div className="flex items-center space-x-5 md:hidden">
         <button
           type="button"
-          className="border border-whiteColor px-10 py-4 text-2xl font-semibold md:px-8 md:py-3 md:text-xl xs:px-4 xs:text-base "
+          className="border border-whiteColor px-3 py-2 font-semibold"
         >
-          Sign Up
+          Lets explore
         </button>
-
-        <RiMenu5Line size={44} className="hidden sm:inline-block" />
+        <RiMenu5Line size={32} />
       </div>
-    </div>
+      <nav className="hidden  md:flex md:items-center md:justify-between">
+        <ul className="flex cursor-pointer items-center space-x-6 text-sm font-semibold lg:text-base xl:text-lg">
+          <li className="">Design</li>
+          <li className="">Vehicles</li>
+          <li className="">Exclusive</li>
+          <li className="">Innovation</li>
+        </ul>
+      </nav>
+      <button
+        type="button"
+        className="hidden whitespace-nowrap border border-whiteColor px-3 py-2 text-sm font-semibold md:flex lg:text-base xl:text-lg"
+      >
+        Lets explore
+      </button>
+    </motion.div>
   );
 }
 

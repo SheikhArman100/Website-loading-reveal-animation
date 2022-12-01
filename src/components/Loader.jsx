@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 import React from "react";
 import image1 from "../assets/image1_tiny.jpg";
@@ -6,10 +7,12 @@ import image4 from "../assets/image4_tiny.jpg";
 import image5 from "../assets/image5_tiny.jpg";
 import image6 from "../assets/image6_tiny.jpg";
 
+// animation variants
+
 const container = {
   show: {
     transition: {
-      staggerChildren: 0.35,
+      staggerChildren: 0.45,
     },
   },
 };
@@ -46,58 +49,56 @@ const itemMain = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
 function Loader({ setLoading }) {
   return (
     <motion.div
+      className="relative flex h-screen w-screen origin-center items-center justify-center  text-center"
       variants={container}
       initial="hidden"
       animate="show"
       exit="exit"
+      key="loader"
       onAnimationComplete={() => setLoading(false)}
-      className="relative flex h-screen w-screen origin-center items-center justify-center"
     >
-      <ImageConatiner
-        name={image6}
-        effect="absolute w-[600px] bottom-[6%] left-[14%] md:w-[400px] xs:left-[4%] xs:bottom-[20%] xs:w-[250px] sm:w-[400px] sm:left-[6%] sm:bottom-[16%]"
-        variant={item}
+      <ImageContainer
+        image={image6}
+        variants={item}
+        effect="absolute z-[1] object-fill w-[200px] left-[2%] bottom-[16%] sm:w-[300px] sm:bottom-[10%] lg:w-[310px] xl:w-[340px] 2xl:w-[380px]"
         id="1"
       />
-      <motion.div
+      <motion.img
+        src={image3}
         variants={itemMain}
-        className="absolute w-[800px] object-fill xs:w-[300px] sm:w-[450px] md:w-[500px]"
-      >
-        <motion.img src={image3} alt="" id="2" layoutId="main-image" />
-      </motion.div>
-
-      <ImageConatiner
-        name={image4}
-        effect="absolute w-[450px] right-[10%] top-[8%] md:right-[12%] md:top-[12%] md:w-[350px] xs:top-[12%] xs:right-[4%] xs:w-[200px] sm:w-[300px] sm:right-[6%]"
-        variant={item}
+        alt=""
+        className="z-[2] w-[320px] object-fill sm:w-[400px]  lg:w-[500px] xl:w-[600px] 2xl:w-[700px]"
+        id="2"
+        layoutId="main-image"
+      />
+      <ImageContainer
+        image={image4}
+        variants={item}
+        effect="absolute z-[3] object-fill w-[200px] top-[4%] right-[2%] sm:w-[210px] lg:w-[220px] xl:w-[300px] 2xl:w-[340px]"
         id="3"
       />
-      <ImageConatiner
-        name={image5}
-        effect="absolute w-[550px] right-[18%] bottom-[4%] md:w-[40%] md:max-w-[400px] xs:right-[6%] xs:bottom-[12%] xs:w-[250px] sm:w-[350px] sm:right-[6%] sm:bottom-[10%]"
-        variant={item}
+      <ImageContainer
+        image={image5}
+        variants={item}
+        effect="absolute z-[4] object-fill w-[220px] right-[2%] bottom-[14%] sm:w-[280px] sm:bottom-[6%]  lg:w-[310px] xl:w-[340px] 2xl:w-[380px]"
         id="4"
       />
-      <ImageConatiner
-        name={image1}
-        effect="absolute w-[400px] left-[16%] top-[2%] md:w-[250px] xs:left-[2%] xs:top-[4%] xs:w-[200px] sm:w-[250px] sm:left-[6%]"
-        variant={item}
+      <ImageContainer
+        image={image1}
+        variants={item}
+        effect="absolute z-[5] object-fill w-[180px] left-[2%] top-[2%] sm:w-[200px]  lg:w-[220px] xl:w-[300px]  2xl:w-[340px]"
         id="5"
       />
     </motion.div>
   );
 }
 
-// eslint-disable-next-line react/prop-types
-function ImageConatiner({ name, effect, variant, id }) {
+function ImageContainer({ image, effect, variants, id }) {
   return (
-    <motion.div variants={variant} className={effect}>
-      <img src={name} alt={id} />
-    </motion.div>
+    <motion.img src={image} alt={id} className={effect} variants={variants} />
   );
 }
 

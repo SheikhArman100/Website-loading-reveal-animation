@@ -3,11 +3,13 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-        xs: { "max": "400px" },
-        sm: { "max": "1080px" },
-        md: { "max": "1440px" },
-        lg: { "max": "1920px" },
-      },
+      // breakpoints
+      sm: "480px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1600px",
+    },
     extend: {
       colors: {
         // custom colors for the website
